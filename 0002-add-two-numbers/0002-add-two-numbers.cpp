@@ -23,46 +23,30 @@
 
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        int carry = 0;
-        int operand1 = 0;
-        int operand2 = 0;
-        ListNode* head = nullptr;
-        ListNode* last_node = nullptr;
-        while(l1 || l2 || carry)
+    ListNode* addTwoNumbers(ListNode* pL1, ListNode* pL2) {
+        ListNode* pOutput = pL1;
+        for(;;)
         {
-            if(l1)
+            if(!pL1->next && pL2)
             {
-                operand1 = l1->val;
-                l1 = l1 -> next;
+                pL1->next = pL2->next;
+                pL2->next = nullptr;
             }
-            else
-            {
-                operand1 = 0;
+            if(pL2 != nullptr)
+                pL1->val += pL2->val;
+            if (pL1->val > 9){
+                if(pL1->next)
+                    pL1->next->val+=1;
+                else
+                    pL1->next = new ListNode(1);
+                pL1->val -= 10;
             }
-            if(l2)
-            {
-                operand2 = l2->val;
-                l2 = l2 -> next;
-            }
-            else
-            {
-                operand2 = 0;
-            }
-            int sum = (operand1 + operand2+carry) % 10;
-            carry = floor((operand1+operand2+carry)/10);
-            if(last_node != nullptr)
-            {
-                last_node->next = new ListNode(sum);
-                last_node = last_node->next;
-            }
-            else
-            {
-                head = new ListNode(sum);
-                last_node = head;
-            }
+            if (!pL1->next)
+                break;
+            pL1 = pL1->next;
+            if(pL2 != nullptr)
+                pL2 = pL2->next;
         }
-        
-        return head;
+        return pOutput;
     }
 };
