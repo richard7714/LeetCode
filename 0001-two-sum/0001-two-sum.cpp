@@ -5,10 +5,9 @@ public:
         vector<int> output;
         for (int idx = 0; idx<nums.size();idx++)
         {
-            int residual = target - nums[idx];
-            if(index_map.find(residual) != index_map.end())
+            if(index_map.find(target - nums[idx]) != index_map.end())
             {
-                output.push_back(index_map.find(residual)->second);
+                output.push_back(index_map.find(target - nums[idx])->second);
                 output.push_back(idx);
                 return output;
             }
