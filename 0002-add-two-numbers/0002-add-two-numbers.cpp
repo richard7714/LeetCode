@@ -1,3 +1,21 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+/**
+ two non-negative int, non-empty linked list
+ digit in reverse order
+ add two num and return sum as linked list
+ no leading zero, except 0
+*/
+
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* pL1, ListNode* pL2) {
